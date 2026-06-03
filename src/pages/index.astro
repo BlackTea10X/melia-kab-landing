@@ -1,17 +1,284 @@
 ---
+import "../styles/global.css";
 
+const whatsappNumber = "529821070644";
+const whatsappMessage = "Hola, quiero más información sobre la miel MELIA KÁB.";
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="MELIA KÁB, miel artesanal de abeja melipona inspirada en la tradición maya. Producto natural, premium y mexicano."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      property="og:title"
+      content="MELIA KÁB | Elixir Sagrado de la Dama Maya"
+    />
+    <meta
+      property="og:description"
+      content="Miel artesanal de abeja melipona con origen cultural maya, sabor floral y calidad premium."
+    />
+    <meta property="og:image" content="/images/melia-hero.png" />
+
+    <title>MELIA KÁB | Miel de Melipona</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="#inicio" class="brand brand-with-logo">
+        <img
+          src="/images/logo.png"
+          alt="Logo de MELIA KÁB"
+          width="42"
+          height="42"
+        />
+        <span>MELIA KÁB</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#producto">Producto</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#precios">Precios</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a
+        class="header-button"
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero section">
+        <div class="hero-content">
+          <p class="eyebrow">Miel artesanal mexicana</p>
+          <h1>MELIA KÁB</h1>
+          <p class="slogan">Elixir Sagrado de la Dama Maya</p>
+          <p class="hero-text">
+            Desde las antiguas tradiciones de la cultura maya hasta tu mesa. Una
+            miel de melipona de origen artesanal, sabor floral y carácter
+            premium.
+          </p>
+
+          <div class="hero-actions">
+            <a class="primary-button" href="#catalogo">Ver catálogo</a>
+            <a
+              class="secondary-button"
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hacer pedido
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-card">
+          <img
+            src="/images/jar.png"
+            alt="Anuncio promocional de miel MELIA KÁB"
+          />
+        </div>
+      </section>
+
+      <section id="producto" class="section product-section">
+        <div class="section-heading">
+          <p class="eyebrow">Producto</p>
+          <h2>Miel de abeja melipona</h2>
+          <p>
+            MELIA KÁB es una miel artesanal elaborada por abejas meliponas,
+            reconocida por su sabor delicado, textura fluida y valor cultural.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <span>✦</span>
+            <h3>100% miel de melipona</h3>
+            <p>Producto natural de especialidad, ideal para consumo gourmet.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>✦</span>
+            <h3>Producción artesanal</h3>
+            <p>Elaborada en pequeña escala, cuidando su origen y calidad.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>✦</span>
+            <h3>Origen maya</h3>
+            <p>Inspirada en la tradición de la abeja Xunán Kab.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>✦</span>
+            <h3>Calidad premium</h3>
+            <p>Color ámbar, notas florales y presentación elegante.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="catalogo" class="section catalog-section">
+        <div class="section-heading">
+          <p class="eyebrow">Catálogo</p>
+          <h2>Presentaciones disponibles</h2>
+          <p>
+            Opciones pensadas para consumo personal, regalo o compra especial.
+          </p>
+        </div>
+
+        <div class="catalog-grid">
+          <article class="product-card">
+            <h3>Frasco individual</h3>
+            <p class="product-size">250 g</p>
+            <p>Miel de melipona en presentación premium.</p>
+            <strong>$___ MXN</strong>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
+              >Pedir por WhatsApp</a
+            >
+          </article>
+
+          <article class="product-card featured">
+            <h3>Paquete regalo</h3>
+            <p class="product-size">2 frascos de 250 g</p>
+            <p>Ideal para obsequios, detalles especiales o consumo familiar.</p>
+            <strong>$___ MXN</strong>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
+              >Consultar disponibilidad</a
+            >
+          </article>
+
+          <article class="product-card">
+            <h3>Pedido especial</h3>
+            <p class="product-size">Mayoreo o eventos</p>
+            <p>Pedidos personalizados sujetos a disponibilidad.</p>
+            <strong>Cotización</strong>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
+              >Solicitar cotización</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section id="precios" class="section price-section">
+        <div class="section-heading">
+          <p class="eyebrow">Precio</p>
+          <h2>Precios, promociones y formas de pago</h2>
+        </div>
+
+        <div class="info-panel">
+          <ul>
+            <li>Frasco de 250 g: $___ MXN.</li>
+            <li>Promoción por compra de 2 frascos o más.</li>
+            <li>Pago en efectivo o transferencia bancaria.</li>
+            <li>Empaque especial para regalo bajo solicitud.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section story-section">
+        <div class="story-content">
+          <p class="eyebrow">Historia</p>
+          <h2>Una tradición milenaria en cada frasco</h2>
+          <p>
+            La miel de melipona ha sido apreciada por generaciones por su sabor
+            excepcional, su delicado aroma floral y su vínculo con la cultura
+            maya. MELIA KÁB busca transmitir esa herencia natural en una
+            presentación artesanal, elegante y mexicana.
+          </p>
+        </div>
+      </section>
+
+      <section id="ubicacion" class="section location-section">
+        <div class="section-heading">
+          <p class="eyebrow">Plaza</p>
+          <h2>Ubicación y entregas</h2>
+          <p>
+            Producto mexicano con origen en Campeche. Consulta disponibilidad,
+            entregas locales y envíos bajo cotización.
+          </p>
+        </div>
+
+        <div class="location-grid">
+          <div class="info-panel">
+            <h3>Datos de atención</h3>
+            <p><strong>Dirección:</strong> __________________________</p>
+            <p>
+              <strong>Horario:</strong> Lunes a sábado, 9:00 a.m. a 6:00 p.m.
+            </p>
+            <p>
+              <strong>Entregas:</strong> Locales y nacionales bajo cotización.
+            </p>
+          </div>
+
+          <div class="map-placeholder">Inserta aquí un mapa de Google Maps</div>
+        </div>
+      </section>
+
+      <section class="section media-section">
+        <div class="section-heading">
+          <p class="eyebrow">Promoción</p>
+          <h2>Conoce nuestra historia</h2>
+          <p>
+            Agrega aquí un video breve, audio ambiental o recurso promocional
+            para reforzar la identidad de la marca.
+          </p>
+        </div>
+
+        <div class="media-card">
+          <audio controls>
+            <source src="/audio/ambiente.mp3" type="audio/mpeg" />
+            Tu navegador no soporta audio.
+          </audio>
+        </div>
+      </section>
+
+      <section id="contacto" class="section contact-section">
+        <div class="contact-card">
+          <p class="eyebrow">Contacto</p>
+          <h2>Haz tu pedido o solicita más información</h2>
+          <p>
+            Comunícate con MELIA KÁB para consultar precios, disponibilidad,
+            entregas y pedidos especiales.
+          </p>
+
+          <div class="contact-links">
+            <a
+              class="primary-button"
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contactar por WhatsApp
+            </a>
+            <a class="secondary-button" href="mailto:contacto@meliakab.com">
+              Enviar correo
+            </a>
+          </div>
+
+          <div class="social-data">
+            <p><strong>Teléfono:</strong> +52 9821070644</p>
+            <p><strong>Correo:</strong> contacto@meliakab.com</p>
+            <p><strong>Instagram:</strong> @meliakab</p>
+            <p><strong>Facebook:</strong> MELIA KÁB</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>MELIA KÁB · Elixir Sagrado de la Dama Maya</p>
+      <p>Producto mexicano · Producción artesanal · Miel de melipona</p>
+    </footer>
+  </body>
 </html>
