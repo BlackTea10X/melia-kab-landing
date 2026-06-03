@@ -1,46 +1,58 @@
 ---
 import "../styles/global.css";
 
+const siteUrl = "https://melia-kab.vercel.app";
+
+const pageTitle = "MELIA KÁB | Miel de Melipona";
+const pageDescription =
+  "Miel artesanal de abeja melipona inspirada en la tradición maya. Producto natural, premium y mexicano.";
+
+const ogImage = `${siteUrl}/images/og-image.webp`;
+
 const whatsappNumber = "529821070644";
 const whatsappMessage = "Hola, quiero más información sobre la miel MELIA KÁB.";
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  whatsappMessage,
+)}`;
 ---
 
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="MELIA KÁB, miel artesanal de abeja melipona inspirada en la tradición maya. Producto natural, premium y mexicano."
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta
-      property="og:title"
-      content="MELIA KÁB | Elixir Sagrado de la Dama Maya"
-    />
-    <meta
-      property="og:description"
-      content="Miel artesanal de abeja melipona con origen cultural maya, sabor floral y calidad premium."
-    />
-    <meta property="og:image" content="/images/melia-hero.png" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
 
-    <title>MELIA KÁB | Miel de Melipona</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
 
   <body>
     <header class="site-header">
-      <a href="#inicio" class="brand brand-with-logo">
+      <a href="#inicio" class="brand brand-with-logo" aria-label="Ir al inicio">
         <img
           src="/images/logo.png"
           alt="Logo de MELIA KÁB"
-          width="42"
-          height="42"
+          width="48"
+          height="48"
         />
         <span>MELIA KÁB</span>
       </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Navegación principal">
         <a href="#producto">Producto</a>
         <a href="#catalogo">Catálogo</a>
         <a href="#precios">Precios</a>
@@ -85,8 +97,11 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 
         <div class="hero-image-card">
           <img
-            src="/images/jar.png"
+            class="js-lightbox-image"
+            src="/images/melia-hero.webp"
             alt="Anuncio promocional de miel MELIA KÁB"
+            width="1200"
+            height="630"
           />
         </div>
       </section>
@@ -103,25 +118,25 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 
         <div class="features-grid">
           <article class="feature-card">
-            <span>✦</span>
+            <span aria-hidden="true">✦</span>
             <h3>100% miel de melipona</h3>
             <p>Producto natural de especialidad, ideal para consumo gourmet.</p>
           </article>
 
           <article class="feature-card">
-            <span>✦</span>
+            <span aria-hidden="true">✦</span>
             <h3>Producción artesanal</h3>
             <p>Elaborada en pequeña escala, cuidando su origen y calidad.</p>
           </article>
 
           <article class="feature-card">
-            <span>✦</span>
+            <span aria-hidden="true">✦</span>
             <h3>Origen maya</h3>
             <p>Inspirada en la tradición de la abeja Xunán Kab.</p>
           </article>
 
           <article class="feature-card">
-            <span>✦</span>
+            <span aria-hidden="true">✦</span>
             <h3>Calidad premium</h3>
             <p>Color ámbar, notas florales y presentación elegante.</p>
           </article>
@@ -134,38 +149,72 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
           <h2>Presentaciones disponibles</h2>
           <p>
             Opciones pensadas para consumo personal, regalo o compra especial.
+            Da clic en las imágenes para verlas con mayor detalle.
           </p>
         </div>
 
         <div class="catalog-grid">
           <article class="product-card">
+            <img
+              class="product-image js-lightbox-image"
+              src="/images/presentacion-250g.webp"
+              alt="Frasco individual de miel MELIA KÁB de 250 gramos"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
             <h3>Frasco individual</h3>
             <p class="product-size">250 g</p>
             <p>Miel de melipona en presentación premium.</p>
-            <strong>$___ MXN</strong>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-              >Pedir por WhatsApp</a
-            >
+            <strong>$500 MXN</strong>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              Pedir por WhatsApp
+            </a>
           </article>
 
           <article class="product-card featured">
+            <img
+              class="product-image js-lightbox-image"
+              src="/images/paquete-regalo.webp"
+              alt="Paquete regalo de MELIA KÁB con dos frascos de miel de melipona"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
             <h3>Paquete regalo</h3>
             <p class="product-size">2 frascos de 250 g</p>
-            <p>Ideal para obsequios, detalles especiales o consumo familiar.</p>
-            <strong>$___ MXN</strong>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-              >Consultar disponibilidad</a
-            >
+            <p>
+              Opción ideal para obsequios, detalles especiales o consumo
+              familiar.
+            </p>
+            <strong>$800 MXN</strong>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              Pedir por WhatsApp
+            </a>
           </article>
 
           <article class="product-card">
-            <h3>Pedido especial</h3>
+            <img
+              class="product-image js-lightbox-image"
+              src="/images/pedido-especial.webp"
+              alt="Pedido especial de miel MELIA KÁB para eventos o mayoreo"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+            <h3>Paquete especial</h3>
             <p class="product-size">Mayoreo o eventos</p>
-            <p>Pedidos personalizados sujetos a disponibilidad.</p>
+            <p>
+              Presentación para eventos, regalos empresariales o pedidos
+              especiales.
+            </p>
             <strong>Cotización</strong>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-              >Solicitar cotización</a
-            >
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              Contactar para cotización
+            </a>
           </article>
         </div>
       </section>
@@ -178,9 +227,13 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 
         <div class="info-panel">
           <ul>
-            <li>Frasco de 250 g: $___ MXN.</li>
-            <li>Promoción por compra de 2 frascos o más.</li>
-            <li>Pago en efectivo o transferencia bancaria.</li>
+            <li>Frasco de 250 g: $500 MXN.</li>
+            <li>Paquete de 2 frascos: $800 MXN.</li>
+            <li>Paquete de 6 frascos: $2500 MXN.</li>
+            <li>
+              Pago en efectivo, transferencia bancaria y tarjetas de
+              débito/crédito.
+            </li>
             <li>Empaque especial para regalo bajo solicitud.</li>
           </ul>
         </div>
@@ -212,7 +265,9 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
         <div class="location-grid">
           <div class="info-panel">
             <h3>Datos de atención</h3>
-            <p><strong>Dirección:</strong> __________________________</p>
+            <p>
+              <strong>Dirección:</strong> Ciudad del Carmen, Campeche, México.
+            </p>
             <p>
               <strong>Horario:</strong> Lunes a sábado, 9:00 a.m. a 6:00 p.m.
             </p>
@@ -221,25 +276,32 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
             </p>
           </div>
 
-          <div class="map-placeholder">Inserta aquí un mapa de Google Maps</div>
+          <div class="map-card">
+            <iframe
+              class="map-frame"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6906.141357174128!2d-90.71327944967386!3d19.72096828559346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x85e88482af90d195%3A0x2de0580e81a6f57!2sCiudad%20del%20Carmen%2C%20Camp.%2C%20M%C3%A9xico!5e0!3m2!1ses!2smx!4v1754015954561!5m2!1ses!2smx"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación de MELIA KÁB"></iframe>
+          </div>
         </div>
       </section>
 
       <section class="section media-section">
         <div class="section-heading">
           <p class="eyebrow">Promoción</p>
-          <h2>Conoce nuestra historia</h2>
+          <h2>Video promocional</h2>
           <p>
-            Agrega aquí un video breve, audio ambiental o recurso promocional
-            para reforzar la identidad de la marca.
+            Conoce la identidad visual de MELIA KÁB y el valor artesanal de su
+            miel de melipona.
           </p>
         </div>
 
-        <div class="media-card">
-          <audio controls>
-            <source src="/audio/ambiente.mp3" type="audio/mpeg" />
-            Tu navegador no soporta audio.
-          </audio>
+        <div class="video-card">
+          <video controls preload="metadata" poster="/images/melia-hero.webp">
+            <source src="/videos/melia-video.mp4" type="video/mp4" />
+            Tu navegador no soporta video.
+          </video>
         </div>
       </section>
 
@@ -267,7 +329,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
           </div>
 
           <div class="social-data">
-            <p><strong>Teléfono:</strong> +52 9821070644</p>
+            <p><strong>Teléfono:</strong> +52 982 107 0644</p>
             <p><strong>Correo:</strong> contacto@meliakab.com</p>
             <p><strong>Instagram:</strong> @meliakab</p>
             <p><strong>Facebook:</strong> MELIA KÁB</p>
@@ -280,5 +342,68 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       <p>MELIA KÁB · Elixir Sagrado de la Dama Maya</p>
       <p>Producto mexicano · Producción artesanal · Miel de melipona</p>
     </footer>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button
+        class="lightbox-close"
+        type="button"
+        id="lightboxClose"
+        aria-label="Cerrar imagen ampliada"
+      >
+        ×
+      </button>
+
+      <img id="lightboxImage" src="" alt="" />
+      <p id="lightboxCaption"></p>
+    </div>
+
+    <script is:inline>
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const lightboxCaption = document.getElementById("lightboxCaption");
+      const lightboxClose = document.getElementById("lightboxClose");
+      const images = document.querySelectorAll(".js-lightbox-image");
+
+      function openLightbox(image) {
+        if (!lightbox || !lightboxImage || !lightboxCaption) return;
+
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt || "Imagen ampliada del producto";
+        lightboxCaption.textContent = image.alt || "";
+
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("no-scroll");
+      }
+
+      function closeLightbox() {
+        if (!lightbox || !lightboxImage || !lightboxCaption) return;
+
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("no-scroll");
+
+        lightboxImage.src = "";
+        lightboxCaption.textContent = "";
+      }
+
+      images.forEach((image) => {
+        image.addEventListener("click", () => openLightbox(image));
+      });
+
+      lightboxClose?.addEventListener("click", closeLightbox);
+
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+      });
+    </script>
   </body>
 </html>

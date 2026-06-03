@@ -29,6 +29,10 @@ body {
     linear-gradient(180deg, var(--cream-soft), var(--cream));
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -44,12 +48,12 @@ a {
   z-index: 20;
   width: min(100% - 32px, var(--max-width));
   margin: 16px auto 0;
-  padding: 14px 18px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: rgba(255, 249, 238, 0.88);
+  background: rgba(255, 249, 238, 0.9);
   border: 1px solid var(--line);
   border-radius: 999px;
   backdrop-filter: blur(14px);
@@ -73,10 +77,10 @@ a {
 }
 
 .brand-with-logo img {
-  width: 42px;
-  height: 42px;
-  max-width: 42px;
-  max-height: 42px;
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  max-height: 48px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -86,19 +90,6 @@ a {
   letter-spacing: 0.08em;
   color: var(--gold-dark);
   white-space: nowrap;
-}
-
-@media (max-width: 640px) {
-  .brand-with-logo img {
-    width: 34px;
-    height: 34px;
-    max-width: 34px;
-    max-height: 34px;
-  }
-
-  .brand-with-logo span {
-    font-size: 0.82rem;
-  }
 }
 
 .nav {
@@ -211,6 +202,7 @@ h1 {
 }
 
 .hero-image-card {
+  width: 100%;
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -219,11 +211,16 @@ h1 {
 }
 
 .hero-image-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  object-position: center;
   border-radius: calc(var(--radius) - 10px);
+  background: linear-gradient(180deg, #fff8e8, #f7ead1);
 }
 
 .section-heading {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto 34px;
   text-align: center;
 }
@@ -247,16 +244,22 @@ h1 {
 .features-grid,
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+}
+
+.features-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.catalog-grid {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .feature-card,
 .product-card,
 .info-panel,
-.media-card,
 .contact-card,
-.map-placeholder {
+.map-card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.56);
@@ -270,8 +273,8 @@ h1 {
 
 .feature-card span {
   display: inline-flex;
-  width: 46px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
   margin-bottom: 16px;
   align-items: center;
   justify-content: center;
@@ -292,10 +295,6 @@ h1 {
 .info-panel li {
   line-height: 1.65;
   color: var(--brown-soft);
-}
-
-.catalog-grid {
-  grid-template-columns: repeat(3, 1fr);
 }
 
 .product-card {
@@ -322,6 +321,22 @@ h1 {
 .product-card a {
   color: var(--gold-dark);
   font-weight: 900;
+}
+
+.product-image {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fff8e8, #f7ead1);
+}
+
+.js-lightbox-image {
+  cursor: zoom-in;
 }
 
 .info-panel {
@@ -352,23 +367,33 @@ h1 {
   gap: 22px;
 }
 
-.map-placeholder {
+.map-card {
   min-height: 320px;
-  display: grid;
-  place-items: center;
-  padding: 30px;
-  text-align: center;
-  color: var(--brown-soft);
+  overflow: hidden;
 }
 
-.media-card {
-  max-width: 620px;
-  margin: 0 auto;
-  padding: 26px;
-}
-
-.media-card audio {
+.map-frame {
   width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+  display: block;
+}
+
+.video-card {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: var(--shadow);
+}
+
+.video-card video {
+  width: 100%;
+  display: block;
+  border-radius: calc(var(--radius) - 10px);
 }
 
 .contact-card {
@@ -412,6 +437,68 @@ h1 {
   margin: 4px 0;
 }
 
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(24, 12, 7, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox img {
+  width: auto;
+  max-width: min(100%, 1100px);
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 22px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.38);
+  background: var(--cream-soft);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 249, 238, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 249, 238, 0.92);
+  color: var(--brown);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+}
+
+.lightbox-close:hover {
+  transform: scale(1.04);
+}
+
+#lightboxCaption {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: min(100% - 40px, 760px);
+  margin: 0;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(255, 249, 238, 0.92);
+  color: var(--brown);
+  text-align: center;
+  font-size: 0.95rem;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
 @media (max-width: 960px) {
   .site-header {
     align-items: flex-start;
@@ -442,6 +529,10 @@ h1 {
     justify-content: center;
   }
 
+  .hero-image-card img {
+    height: 360px;
+  }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -463,8 +554,15 @@ h1 {
     padding: 12px;
   }
 
-  .brand {
-    font-size: 0.9rem;
+  .brand-with-logo img {
+    width: 36px;
+    height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+  }
+
+  .brand-with-logo span {
+    font-size: 0.82rem;
   }
 
   .header-button {
@@ -487,8 +585,16 @@ h1 {
     padding-top: 42px;
   }
 
+  .hero-image-card img {
+    height: 260px;
+  }
+
   .features-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-image {
+    height: 230px;
   }
 
   .feature-card,
@@ -501,5 +607,27 @@ h1 {
 
   .social-data {
     grid-template-columns: 1fr;
+  }
+
+  .lightbox {
+    padding: 16px;
+  }
+
+  .lightbox img {
+    max-height: 76vh;
+    border-radius: 16px;
+  }
+
+  .lightbox-close {
+    top: 14px;
+    right: 14px;
+    width: 42px;
+    height: 42px;
+  }
+
+  #lightboxCaption {
+    bottom: 14px;
+    border-radius: 18px;
+    font-size: 0.86rem;
   }
 }
