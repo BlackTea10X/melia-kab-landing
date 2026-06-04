@@ -10,10 +10,82 @@ const pageDescription =
 const ogImage = `${siteUrl}/images/og-image.webp`;
 
 const whatsappNumber = "529821070644";
-const whatsappMessage = "Hola, quiero más información sobre la miel MELIA KÁB.";
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-  whatsappMessage,
-)}`;
+
+function getWhatsappLink(productName = "la miel MELIA KÁB") {
+  const whatsappMessage = `Hola, quiero más información sobre ${productName}.`;
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    whatsappMessage,
+  )}`;
+}
+
+const whatsappLink = getWhatsappLink();
+
+const products = [
+  {
+    name: "Frasco individual",
+    size: "250 g",
+    description: "Miel de melipona en presentación premium.",
+    price: "$500 MXN",
+    image: "/images/presentacion-250g.webp",
+    alt: "Frasco individual de miel MELIA KÁB de 250 gramos",
+    cta: "Pedir por WhatsApp",
+    featured: false,
+  },
+  {
+    name: "Paquete regalo",
+    size: "2 frascos de 250 g",
+    description:
+      "Opción ideal para obsequios, detalles especiales o consumo familiar.",
+    price: "$800 MXN",
+    image: "/images/paquete-regalo.webp",
+    alt: "Paquete regalo de MELIA KÁB con dos frascos de miel de melipona",
+    cta: "Pedir por WhatsApp",
+    featured: true,
+  },
+  {
+    name: "Paquete especial",
+    size: "Mayoreo o eventos",
+    description:
+      "Presentación para eventos, regalos empresariales o pedidos especiales.",
+    price: "Cotización",
+    image: "/images/pedido-especial.webp",
+    alt: "Pedido especial de miel MELIA KÁB para eventos o mayoreo",
+    cta: "Contactar para cotización",
+    featured: false,
+  },
+  {
+    name: "Gotero",
+    size: "Presentación especial",
+    description:
+      "Nueva opción de MELIA KÁB pensada para consumo personal o regalo.",
+    price: "$150 MXN",
+    image: "/images/gotero.webp",
+    alt: "Gotero de miel MELIA KÁB",
+    cta: "Pedir por WhatsApp",
+    featured: false,
+  },
+  {
+    name: "Frasco de 500g",
+    size: "Presentación especial",
+    description: "Nueva presentación artesanal de miel de melipona MELIA KÁB.",
+    price: "$350 MXN",
+    image: "/images/frasco-500g.webp",
+    alt: "Frasco de 500g de miel MELIA KÁB",
+    cta: "Pedir por WhatsApp",
+    featured: false,
+  },
+  {
+    name: "Frasco de 100g",
+    size: "Presentación especial",
+    description:
+      "Opción adicional para pedidos especiales, regalos o consumo familiar.",
+    price: "$150 MXN",
+    image: "/images/frasco-100g.webp",
+    alt: "Frasco de 100g de miel MELIA KÁB",
+    cta: "Pedir por WhatsApp",
+    featured: false,
+  },
+];
 ---
 
 <html lang="es">
@@ -154,68 +226,34 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
         </div>
 
         <div class="catalog-grid">
-          <article class="product-card">
-            <img
-              class="product-image js-lightbox-image"
-              src="/images/presentacion-250g.webp"
-              alt="Frasco individual de miel MELIA KÁB de 250 gramos"
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
-            <h3>Frasco individual</h3>
-            <p class="product-size">250 g</p>
-            <p>Miel de melipona en presentación premium.</p>
-            <strong>$500 MXN</strong>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              Pedir por WhatsApp
-            </a>
-          </article>
-
-          <article class="product-card featured">
-            <img
-              class="product-image js-lightbox-image"
-              src="/images/paquete-regalo.webp"
-              alt="Paquete regalo de MELIA KÁB con dos frascos de miel de melipona"
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
-            <h3>Paquete regalo</h3>
-            <p class="product-size">2 frascos de 250 g</p>
-            <p>
-              Opción ideal para obsequios, detalles especiales o consumo
-              familiar.
-            </p>
-            <strong>$800 MXN</strong>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              Pedir por WhatsApp
-            </a>
-          </article>
-
-          <article class="product-card">
-            <img
-              class="product-image js-lightbox-image"
-              src="/images/pedido-especial.webp"
-              alt="Pedido especial de miel MELIA KÁB para eventos o mayoreo"
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
-            <h3>Paquete especial</h3>
-            <p class="product-size">Mayoreo o eventos</p>
-            <p>
-              Presentación para eventos, regalos empresariales o pedidos
-              especiales.
-            </p>
-            <strong>Cotización</strong>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              Contactar para cotización
-            </a>
-          </article>
+          {
+            products.map((product) => (
+              <article
+                class={`product-card ${product.featured ? "featured" : ""}`}
+              >
+                <img
+                  class="product-image js-lightbox-image"
+                  src={product.image}
+                  alt={product.alt}
+                  width="800"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <h3>{product.name}</h3>
+                <p class="product-size">{product.size}</p>
+                <p>{product.description}</p>
+                <strong>{product.price}</strong>
+                <a
+                  href={getWhatsappLink(product.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {product.cta}
+                </a>
+              </article>
+            ))
+          }
         </div>
       </section>
 
@@ -230,6 +268,10 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
             <li>Frasco de 250 g: $500 MXN.</li>
             <li>Paquete de 2 frascos: $800 MXN.</li>
             <li>Paquete de 6 frascos: $2500 MXN.</li>
+            <li>
+              Productos adicionales disponibles según presentación y
+              disponibilidad.
+            </li>
             <li>
               Pago en efectivo, transferencia bancaria y tarjetas de
               débito/crédito.
@@ -266,8 +308,8 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
           <div class="info-panel">
             <h3>Datos de atención</h3>
             <p>
-              <strong>Dirección:</strong> Candelaria Campeche CP 24330 Colonia Acalan
-              calle 31 2A / 2B No.27
+              <strong>Dirección:</strong> Candelaria, Campeche, CP 24330, Colonia
+              Acalán, calle 31 2A / 2B No. 27.
             </p>
             <p>
               <strong>Horario:</strong> Lunes a sábado, 9:00 a.m. a 6:00 p.m.
